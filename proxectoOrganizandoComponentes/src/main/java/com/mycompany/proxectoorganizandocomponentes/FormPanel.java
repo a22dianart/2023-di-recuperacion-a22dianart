@@ -61,6 +61,8 @@ public class FormPanel extends JPanel{
 
         gbc.gridx = 1;
         gbc.gridy = 2;
+        gbc.weighty=1.0; //IMPORTANTÍSIMOOO
+        gbc.anchor=GridBagConstraints.FIRST_LINE_START; //IMPORTANTÍSIMOOO
 
         add(okBtn, gbc);
         

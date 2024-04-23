@@ -146,9 +146,10 @@ public class FormPanel extends JPanel{
         add(taxTxt, gbc);
         
         maleBtn = new JRadioButton("Male");
-        
+        maleBtn.setActionCommand("Male"); //IMPORTANTEEEEE
         
         femaleBtn = new JRadioButton("Female");
+        femaleBtn.setActionCommand("Female"); //IMPORTANTEEE
         
         genderGrp= new ButtonGroup();
         
@@ -176,14 +177,14 @@ public class FormPanel extends JPanel{
                 AgeCategory idade = (AgeCategory) listaAge.getSelectedValue();
                 String idadeTxt= String.valueOf(idade.getId());
                 String employmentText= employmentBox.getSelectedItem().toString(); //IMPORTANTE
-                String genderText; 
-                //IMPORTANTE
-                if (maleBtn.isSelected()){
-                    genderText= maleBtn.getText();
-                }else{
-                    genderText=femaleBtn.getText();
-                }
-                //****************
+                String genderText = genderGrp.getSelection().getActionCommand(); //IMPORTANTE
+                //peor forma
+               // if (maleBtn.isSelected()){
+               //     genderText= maleBtn.getText();
+               // }else{
+                //    genderText=femaleBtn.getText();
+                //}
+              
                 
                 
                 if (formListener != null) {

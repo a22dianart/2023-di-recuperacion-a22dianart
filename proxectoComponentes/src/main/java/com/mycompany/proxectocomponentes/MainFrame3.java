@@ -39,17 +39,22 @@ public class MainFrame3 extends JFrame {
         passField = new JPasswordField(10);
         comprobarBtn = new JButton("comprobar");
         
-        comprobarBtn.addActionListener(new ActionListener() {
+       ActionListener al = new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent ae) {
-                char[] input = passField.getPassword();
-                if(Arrays.equals(input,password)){ //IMPORTANTE
-                    pane.setBackground(Color.GREEN);
-                    
-                }else{
-                    pane.setBackground(Color.RED);
-                }
-            }
-        });
+               char[] input = passField.getPassword();
+               if (Arrays.equals(input, password)) { //IMPORTANTE
+                   pane.setBackground(Color.GREEN);
+
+               } else {
+                   pane.setBackground(Color.RED);
+               }
+           }
+       };
+
+        comprobarBtn.addActionListener(al);
+            
+        passField.addActionListener(al);
       
 
        
@@ -65,3 +70,4 @@ public class MainFrame3 extends JFrame {
         setVisible(true);
     }
 }
+//ou implementar ActionListener e KeyListener nunha nova clase.

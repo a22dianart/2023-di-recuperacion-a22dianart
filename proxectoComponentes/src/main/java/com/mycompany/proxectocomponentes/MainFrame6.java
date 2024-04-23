@@ -5,17 +5,11 @@
 package com.mycompany.proxectocomponentes;
 
 import java.awt.Container;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.FieldPosition;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.*;
 
 /**
@@ -23,9 +17,9 @@ import javax.swing.*;
  * @author diana
  */
 
-import javax.swing.*;
+
 import javax.swing.text.DateFormatter;
-import javax.swing.text.MaskFormatter;
+
 import javax.swing.text.NumberFormatter;
 
 public class MainFrame6 extends JFrame {

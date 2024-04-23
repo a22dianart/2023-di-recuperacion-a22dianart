@@ -85,17 +85,22 @@ public class FormPanel extends JPanel{
         modelo.addElement(new AgeCategory(0, "Under 18"));
         modelo.addElement(new AgeCategory(1, "18 to 65"));
         modelo.addElement(new AgeCategory(2, "65 or over"));
+
         listaAge= new JList();
-        listaAge.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        listaAge.setPreferredSize(new Dimension(90,20));
+        listaAge.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);   
         listaAge.setModel(modelo);
+        listaAge.setVisibleRowCount(4);//IMPORTANTE
+        listaAge.setPreferredSize(new Dimension(85, 100)); //IMPORTANTE
         
-         //IMPORTANTE
-        JScrollPane scrollList = new JScrollPane(listaAge, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-       //*********
-        gbc.gridx=1;
-        gbc.gridy=2;
+        JScrollPane scrollList = new JScrollPane(listaAge);
+        scrollList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollList.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        //scrollList.setPreferredSize(new Dimension(105, 57)); // Establece el tamaño preferido del JScrollPane
+        gbc.gridx = 1;
+        gbc.gridy = 2;
         add(scrollList, gbc);
+
+        
         
         //IMPORTANTE
         String[] employments = {"employed", "self-employed", "unemployed"};
@@ -110,8 +115,9 @@ public class FormPanel extends JPanel{
 
         gbc.gridx = 1;
         gbc.gridy = 4;
-        
-         add(okBtn, gbc);
+        gbc.weighty = 1.0; //IMPORTANTÍSIMOOO
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START; //IMPORTANTÍSIMOOO
+        add(okBtn, gbc);
         
         ActionListener al = new ActionListener() {
             @Override
@@ -134,6 +140,7 @@ public class FormPanel extends JPanel{
         Dimension dimension = new Dimension(250, 300);
 
         setPreferredSize(dimension); 
+        
      
     }
     public void setFormListener(FormListener listener) {
