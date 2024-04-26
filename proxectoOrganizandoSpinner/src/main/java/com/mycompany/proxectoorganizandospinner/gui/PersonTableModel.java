@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.proxectoorganizandorendererpersonalizado.gui;
+package com.mycompany.proxectoorganizandospinner.gui;
 
-import com.mycompany.proxectoorganizandorendererpersonalizado.model.Person;
+import com.mycompany.proxectoorganizandospinner.model.Person;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import com.mycompany.proxectoorganizandorendererpersonalizado.model.EmploymentCategory;
+import com.mycompany.proxectoorganizandospinner.model.EmploymentCategory;
 
 /**
  *
@@ -75,7 +75,7 @@ public class PersonTableModel extends AbstractTableModel {
     
     @Override 
     public boolean isCellEditable(int row, int column){ //IMPORTANTE
-        if(column==1||column==5){
+        if(column==1||column==5||column==4){
             return true;
         }else{
             return false;
@@ -84,7 +84,25 @@ public class PersonTableModel extends AbstractTableModel {
     
     @Override
     public void setValueAt(Object aValue, int row, int column){//IMPORTANTE
-         
+        if(column==1){
+            List<Person> lista=this.personList;
+            Person persona = lista.get(row);
+            persona.setName(String.valueOf(aValue));
+            this.personList  = lista;
+        }else if (column==5){
+            List<Person> lista = this.personList;
+            Person persona = lista.get(row);
+            Boolean boleano = Boolean.valueOf(String.valueOf(aValue));
+            persona.setUsCitizen(boleano);
+            this.personList = lista; 
+        }else if(column==4){
+            List<Person> lista = this.personList;
+            Person persona = lista.get(row);
+            EmploymentCategory employedCat= (EmploymentCategory) aValue;
+            persona.setEmpCat(employedCat);
+            this.personList = lista;
+            
+        }
     }
     @Override
     public Class<?> getColumnClass(int columnIndex){ //IMPORTANTE

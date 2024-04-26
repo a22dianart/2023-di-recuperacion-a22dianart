@@ -5,6 +5,9 @@
 package com.mycompany.proxectotaboacores;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
@@ -15,11 +18,22 @@ import javax.swing.WindowConstants;
  */
 public class MainFrame extends JFrame {
     private JTable taboa;
+    private ColorTableModel colorTableModel;
+    private List<Color> cores = new ArrayList<>();
     public MainFrame() {
         super("Táboa cores");
         setLayout(new BorderLayout());
-                
-        taboa= new JTable();
+        
+        colorTableModel= new ColorTableModel();
+        cores.add(Color.red);
+        cores.add(Color.ORANGE);
+        cores.add(Color.GREEN);
+        colorTableModel.setData(cores);
+        taboa= new JTable(colorTableModel);
+        
+        taboa.setDefaultRenderer(Color.class,new ColorRenderer());
+        taboa.setDefaultEditor(Color.class, new ColorEditor());
+
         
         add(taboa,BorderLayout.CENTER);
         
