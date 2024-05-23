@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super("Aplicación");
          
-      
+        esteFrame=this;
         setLayout(new BorderLayout());
         
         controller = new Controller();//IMPORTANTE
@@ -268,6 +268,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pd = new PreferencesDialog(esteFrame);
+                pd.setVisible(true);
               
             }
 

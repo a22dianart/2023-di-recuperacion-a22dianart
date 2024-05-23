@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produtos4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36d951e9-0c51-4ab2-aed2-4572ede2647a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter4.jrdax"/>
+	<parameter name="maximo" class="java.lang.Double"/>
+	<queryString language="SQL">
+		<![CDATA[select * from products where price < $P{maximo} order by price]]>
+	</queryString>
+	<field name="PRODUCTID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTID"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="PRODUCTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="SUPPLIERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="CATEGORYID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CATEGORYID"/>
+		<property name="com.jaspersoft.studio.field.label" value="CATEGORYID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="UNIT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UNIT"/>
+		<property name="com.jaspersoft.studio.field.label" value="UNIT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="300" height="30" uuid="2620130a-33a6-4701-bdbd-a4695b5da0a6"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[PRODUTOS CO PREZO MENOR A ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="20" width="100" height="30" uuid="2412c9e6-dc50-4327-a360-23ffac625af9"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{maximo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="6e0870ac-aa8f-44e4-914e-4964c8fbeddc"/>
+				<textFieldExpression><![CDATA[$F{PRODUCTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="10" width="100" height="30" uuid="f0c37d91-3444-4b84-b10c-bac542a6285c"/>
+				<textFieldExpression><![CDATA[$F{PRICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

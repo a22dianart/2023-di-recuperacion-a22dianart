@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="suppliers4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8caa8d6-3cde-43af-8e64-0c348e176018">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter4.jrdax"/>
+	<parameter name="country" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from suppliers where country = $P{country} order by suppliername]]>
+	</queryString>
+	<field name="SUPPLIERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="SUPPLIERNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CONTACTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="ADDRESS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.label" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="POSTALCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.label" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="COUNTRY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.label" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="PHONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<textField>
+				<reportElement x="140" y="24" width="100" height="30" uuid="f0c25649-2fa7-4721-8b02-696aecad9d04"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{country}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="24" width="160" height="30" uuid="93e50d4b-d7f2-4fad-9a45-0ef5a3cac80f"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[SUPPLIERS DE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="110" height="30" uuid="6d66806a-8d09-4bef-9faf-57c770ee8238"/>
+				<textFieldExpression><![CDATA[$F{SUPPLIERNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

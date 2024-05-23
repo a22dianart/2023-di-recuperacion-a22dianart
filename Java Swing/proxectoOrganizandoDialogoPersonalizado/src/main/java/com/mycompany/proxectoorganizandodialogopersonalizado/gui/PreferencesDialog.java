@@ -16,12 +16,14 @@ public class PreferencesDialog extends JDialog{
 
     public PreferencesDialog(Frame parent) {
         super(parent, "Preferences", false);
-        this.setLocationRelativeTo(parent);
-        
         setSize(500, 500);
         Dimension minDimension = new Dimension(600, 650);  //IMPORTANTE
         setMinimumSize(minDimension);
-        setVisible(true);
+        
+        
+        
+        this.setLocationRelativeTo(parent);
+        
     }
     
     

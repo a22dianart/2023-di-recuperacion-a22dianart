@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subInformeEmployee" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3535e02-97bd-453b-8c55-c9a85359d273">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter6.jrdax"/>
+	<parameter name="idEmployee" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select * from employees where employeeid = $P{idEmployee}
+]]>
+	</queryString>
+	<field name="EMPLOYEEID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<field name="LASTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LASTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="LASTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<field name="FIRSTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FIRSTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="FIRSTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<field name="BIRTHDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="BIRTHDATE"/>
+		<property name="com.jaspersoft.studio.field.label" value="BIRTHDATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<field name="PHOTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PHOTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="PHOTO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<field name="NOTES" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOTES"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOTES"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="EMPLOYEES"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="5bb71d15-6161-404f-b475-d75dffaf6d6e"/>
+				<textFieldExpression><![CDATA[$F{FIRSTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="30" uuid="11c760a9-cd24-4ac9-9a16-7526ef658708"/>
+				<textFieldExpression><![CDATA[$F{LASTNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

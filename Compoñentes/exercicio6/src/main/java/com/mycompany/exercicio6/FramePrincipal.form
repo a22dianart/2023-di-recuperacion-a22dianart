@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+              <Component id="reloxo1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="227" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+              <Component id="reloxo1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="180" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="com.mycompany.exercicio6.Reloxo" name="reloxo1">
+      <Properties>
+        <Property name="alarma" type="com.mycompany.exercicio6.Alarma" editor="com.mycompany.exercicio6.AlarmaPropertyEditorSupport">
+          <SerializedValue value="-84,-19,0,5,115,114,0,31,99,111,109,46,109,121,99,111,109,112,97,110,121,46,101,120,101,114,99,105,99,105,111,54,46,65,108,97,114,109,97,-97,14,91,55,34,-22,103,-123,2,0,4,73,0,4,104,111,114,97,73,0,6,109,105,110,117,116,111,90,0,10,112,114,111,103,114,97,109,97,100,97,73,0,7,115,101,103,117,110,100,111,120,112,0,0,0,10,0,0,0,56,1,0,0,0,0"/>
+        </Property>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

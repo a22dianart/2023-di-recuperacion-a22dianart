@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informePrincipal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="899180b9-a6ae-476d-a114-b4b08fd2dbee">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter5.jrdax"/>
+	<parameter name="idFactura" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT o.CUSTOMERID as idCliente, o.ORDERID, p.PRICE , d.QUANTITY, p.PRODUCTNAME
+FROM orders o, orderdetails d, products p
+WHERE o.ORDERID = d.ORDERID and d.PRODUCTID = p.PRODUCTID and o.orderid =
+$P{idFactura}
+]]>
+	</queryString>
+	<field name="IDCLIENTE" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CUSTOMERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDCLIENTE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="ORDERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="QUANTITY" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="QUANTITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="QUANTITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERDETAILS"/>
+	</field>
+	<field name="PRODUCTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="86" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="7" width="300" height="13" uuid="6744f36f-67d3-4e27-b1b9-a9b4c6926869"/>
+				<textFieldExpression><![CDATA["Número de factura: " + $F{ORDERID}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="20" width="545" height="57" uuid="7519e70d-b4de-4ce8-91b3-6734cd2992e0"/>
+				<subreportParameter name="idCliente">
+					<subreportParameterExpression><![CDATA[$F{IDCLIENTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["subinformeCliente.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="6b4f0a0a-d64a-4632-b24e-035fe44142aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05253ee1-b4f0-4193-8920-820b32c3b711"/>
+				</reportElement>
+				<text><![CDATA[Descrición]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="1" width="100" height="30" uuid="50c2ec8c-8430-4248-bf21-ef574ee8c489">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5aed10b7-386a-4415-a2f1-ac5896fc6749"/>
+				</reportElement>
+				<text><![CDATA[Cantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="a17c4b3a-6def-4b5d-b78d-730bc357b591">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9bfb0df-0728-4355-9696-9d04463607a0"/>
+				</reportElement>
+				<text><![CDATA[Precio por unidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="25d71ee1-0b66-4584-874e-4ba39f846186">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05253ee1-b4f0-4193-8920-820b32c3b711"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PRODUCTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="100" height="30" uuid="baa32938-2e38-4acf-b9d1-6278788024b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5aed10b7-386a-4415-a2f1-ac5896fc6749"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{QUANTITY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="cf980f64-1fcb-4bc9-8332-f896fcae8bbf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9bfb0df-0728-4355-9696-9d04463607a0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PRICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

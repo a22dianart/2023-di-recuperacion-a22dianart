@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.exerciciocontactos.VentaNovoContacto">
+
+
+    <Label text="Nome"></Label>
+    <TextField fx:id="nomeTxt" ></TextField>
+    <Label text="Apelidos"></Label>
+    <TextField fx:id="apelidosTxt"></TextField>
+    <Label text="Teléfono"/>
+    <TextField fx:id="telefonoTxt"/>
+    <Label text="Notas"/>
+    <TextField fx:id="notasTxt"/>
+    <Button fx:id="boton" text="Crear" onAction="#onBotonClick"/>
+
+
+
+
+</VBox>

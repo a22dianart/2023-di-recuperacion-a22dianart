@@ -28,8 +28,10 @@ public class ImaxeFondoPropertyEditorSupport extends PropertyEditorSupport {
     @Override
     public String getJavaInitializationString() {
         ImaxeFondo imaxeFondo = imaxeFondoPanel.getSelectedValue();
+        String filePath = imaxeFondo.getFicheiroImaxe().getAbsolutePath();
+        filePath = filePath.replace("\\", "\\\\");
         return "new com.mycompany.jpanelimaxe2.ImaxeFondo(" + "new java.io.File(\""
-                + imaxeFondo.getFicheiroImaxe().getAbsolutePath() + "\"), " + imaxeFondo.getOpacidade()
+                + filePath + "\"), " + imaxeFondo.getOpacidade()
                 + "f)";
     }
 

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="suppliers7" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6bd7f194-b67d-41ff-bbdf-966d1145f4b9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter7.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select * from suppliers order by country
+]]>
+	</queryString>
+	<field name="SUPPLIERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="SUPPLIERNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CONTACTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="CONTACTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="ADDRESS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.label" value="ADDRESS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="CITY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="CITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="POSTALCODE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.label" value="POSTALCODE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="COUNTRY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.label" value="COUNTRY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<field name="PHONE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PHONE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="SUPPLIERS"/>
+	</field>
+	<variable name="SUPPLIERID1" class="java.lang.Integer" resetType="Group" resetGroup="GrupoPais" calculation="Count">
+		<variableExpression><![CDATA[$F{SUPPLIERID}]]></variableExpression>
+	</variable>
+	<group name="GrupoPais">
+		<groupExpression><![CDATA[$F{COUNTRY}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement x="20" y="0" width="230" height="30" uuid="74b18660-bcee-42d3-a525-7ba17b156255"/>
+					<textFieldExpression><![CDATA["Suppliers en: " + $F{COUNTRY}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50">
+				<textField>
+					<reportElement x="227" y="10" width="253" height="30" uuid="6bafba7d-6e39-4591-8231-0f3e00f52d9c"/>
+					<textFieldExpression><![CDATA["Número: " + $V{SUPPLIERID1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="10" width="100" height="30" uuid="956e6293-ec7e-4594-aa6d-5ba5d2fde325">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8231478-6306-428a-a7a0-34f183003031"/>
+				</reportElement>
+				<text><![CDATA[CITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="30" uuid="f05beb40-0993-413a-a0ff-e70dd267b131">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e4a464b-f6c5-4a65-ad46-f7f9f2f6f1a0"/>
+				</reportElement>
+				<text><![CDATA[CONTACTNAME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="10" width="100" height="30" uuid="52ab770b-241d-49e6-9084-a59401afaa34">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c8231478-6306-428a-a7a0-34f183003031"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CITY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="10" width="100" height="30" uuid="0d9a6ffd-a6b8-4306-aa7a-09d07d2b9eba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e4a464b-f6c5-4a65-ad46-f7f9f2f6f1a0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CONTACTNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="322" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="-5" y="20" width="550" height="241" uuid="9c767aff-0d9b-465c-9ce5-a144e8af0cfb"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Suppliers por país"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{COUNTRY}]]></categoryExpression>
+						<valueExpression><![CDATA[$V{GrupoPais_COUNT}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
