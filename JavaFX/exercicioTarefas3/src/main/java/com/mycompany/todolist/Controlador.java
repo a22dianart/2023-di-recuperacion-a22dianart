@@ -39,8 +39,10 @@ public class Controlador {
     private Button novaTarefaBtn;
 
     public void initialize() {
+
+
         novaTarefaBtn.setTooltip(new Tooltip("Crear unha nova tarefa"));
-        Image image = new Image(getClass().getResourceAsStream("/images/novaTarefa.gif"));
+        Image image = new Image(getClass().getResourceAsStream("/images/novaTarefa2.jpg"));
         ImageView imageView = new ImageView(image);
         novaTarefaBtn.setGraphic(imageView);
 
@@ -57,29 +59,7 @@ public class Controlador {
         tarefasListView.getSelectionModel().select(0); //detras do listener para que mostre a primeira tarefa!!!
 
 
-        tarefasListView.setCellFactory(new Callback<ListView<Tarefa>, ListCell<Tarefa>>() {
-            @Override
-            public ListCell<Tarefa> call(ListView<Tarefa> p) {
-                ListCell<Tarefa> cela = new ListCell<>() {
-                    @Override
-                    protected void updateItem(Tarefa t, boolean empty) {
-                        super.updateItem(t, empty);
-                        if (empty) {
-                            setText(null);
-                        } else {
-                            setText(t.getDescricion());
-                            if (t.getDataLimite().equals(LocalDate.now())||t.getDataLimite().isBefore(LocalDate.now())) {
-                                setTextFill(Color.RED);
-                            } else if (t.getDataLimite().equals(LocalDate.now().plusDays(1))) {
-                                setTextFill(Color.ORANGE);
 
-                            }
-                        }
-                    }
-                };
-                return cela;
-            }
-        });
 
 
         //MENU CONTEXTUAL
@@ -100,7 +80,25 @@ public class Controlador {
         tarefasListView.setCellFactory(new Callback<ListView<Tarefa>, ListCell<Tarefa>>() {
             @Override
             public ListCell<Tarefa> call(ListView<Tarefa> p) {
-                ListCell<Tarefa> cela = new ListCell<>();
+
+
+                ListCell<Tarefa> cela = new ListCell<>() {
+                    @Override
+                    protected void updateItem(Tarefa t, boolean empty) {
+                        super.updateItem(t, empty);
+                        if (empty) {
+                            setText(null);
+                        } else {
+                            setText(t.getDescricion());
+                            if (t.getDataLimite().equals(LocalDate.now())||t.getDataLimite().isBefore(LocalDate.now())) {
+                                setTextFill(Color.RED);
+                            } else if (t.getDataLimite().equals(LocalDate.now().plusDays(1))) {
+                                setTextFill(Color.ORANGE);
+
+                            }
+                        }
+                    }
+                };
 
                 cela.emptyProperty().addListener(((obs, wasEmpty, isNowEmpty) -> {
                     if (isNowEmpty) {
@@ -114,9 +112,13 @@ public class Controlador {
         });
         tarefasListView.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent keyEvent) {
-                Tarefa tarefaBorrar = tarefasListView.getSelectionModel().getSelectedItem();
-                borrarTarefa(tarefaBorrar);
+            public void handle(KeyEvent e) {
+                if (e.getCode() == javafx.scene.input.KeyCode.DELETE) {
+                    Tarefa tarefaBorrar = tarefasListView.getSelectionModel().getSelectedItem();
+                    borrarTarefa(tarefaBorrar);
+                }
+
+
             }
         });
 
