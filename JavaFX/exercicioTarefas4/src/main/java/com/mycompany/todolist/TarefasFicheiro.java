@@ -2,8 +2,12 @@ package com.mycompany.todolist;
 
 
 import com.mycompany.todolist.datamodel.Tarefa;
+import javafx.beans.Observable;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,11 +35,19 @@ public class TarefasFicheiro {
     public ObservableList<Tarefa> getTarefas() {
         return tarefas;
     }
-    public void setTarefas(ObservableList<Tarefa> tarefas) {
-        this.tarefas=tarefas;
-    }
+//    public void setTarefas(ObservableList<Tarefa> tarefas) {
+//        this.tarefas=tarefas;
+//    }
     public void lerTarefas() throws IOException {
-        tarefas = FXCollections.observableArrayList();
+
+        Callback<Tarefa, Observable[]> extractor = new Callback<Tarefa, Observable[]>() {
+            @Override
+            public Observable[] call(Tarefa tarefa) {
+                return new Observable[] {tarefa.dataLimiteProperty()};
+            }
+        };
+        tarefas =FXCollections.observableArrayList(extractor);
+
         Path path = Paths.get(filename);
         BufferedReader br = Files.newBufferedReader(path);
         String input;
@@ -82,11 +94,11 @@ public class TarefasFicheiro {
         tarefas.remove(tarefa);
     }
 
-    public void modificarTarefa(Tarefa tarefa, Tarefa tarefaModificada){ //IMPORTANTEEE
-       // ver en que indice está tarefaorixinal para cambialo por tarefaModificada
-       int indice = tarefas.indexOf(tarefa);
-       tarefas.remove(indice);
-       tarefas.add(indice, tarefaModificada);
+    public void modificarTarefa(Tarefa tarefa, String detalles, String descricion, LocalDate data){ //IMPORTANTEEE
+
+      tarefa.setDescricion(descricion);
+      tarefa.setDetalles(detalles);
+      tarefa.setDataLimite(data);
 
 
     }

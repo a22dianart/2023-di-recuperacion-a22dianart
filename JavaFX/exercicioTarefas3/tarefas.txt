@@ -1,5 +1,3 @@
-escribir	escribir algo	30 05 2024
-bailar	bailar un baile	29 05 2024
 aprender	aprender algo novo	10 07 2024
-viaxar	a Japón	08 05 2025
 viaxar	a China	08 05 2025
+escribir 	escribir algo	30 05 2024

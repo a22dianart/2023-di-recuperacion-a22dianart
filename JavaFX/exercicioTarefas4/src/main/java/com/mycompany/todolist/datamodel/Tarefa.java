@@ -1,25 +1,26 @@
 package com.mycompany.todolist.datamodel;
 
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import java.time.LocalDate;
-import java.util.Locale;
 
 public class Tarefa {
     private String descricion;
     private String detalles;
-    private LocalDate dataLimite;
+    private SimpleObjectProperty<LocalDate> dataLimite;
 
     public Tarefa(String descricion, String detalles, LocalDate dataLimite) {
         this.descricion = descricion;
         this.detalles = detalles;
-        this.dataLimite = dataLimite;
+        this.dataLimite = new SimpleObjectProperty<>(dataLimite);
+
     }
 
-    public Tarefa(){
-        this.descricion=" ";
-        this.detalles=" ";
-        this.dataLimite= LocalDate.now();
-    }
+
+
 
     public String getDescricion() {
         return descricion;
@@ -38,15 +39,19 @@ public class Tarefa {
     }
 
     public LocalDate getDataLimite() {
-        return dataLimite;
+        return dataLimite.get();
     }
 
     public void setDataLimite(LocalDate dataLimite) {
-        this.dataLimite = dataLimite;
+        this.dataLimite = new SimpleObjectProperty<>(dataLimite);
+    }
+    public SimpleObjectProperty<LocalDate> dataLimiteProperty(){
+        return dataLimite;
     }
 
     @Override
     public String toString() {
         return descricion;
     }
+
 }

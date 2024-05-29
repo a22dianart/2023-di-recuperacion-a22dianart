@@ -1,8 +1,13 @@
 package com.mycompany.todolist;
 
 import com.mycompany.todolist.datamodel.Tarefa;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,12 +23,10 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 public class Controlador {
+
     private List<Tarefa> tarefas;
     @FXML
     private ListView<Tarefa> tarefasListView;
@@ -38,6 +41,8 @@ public class Controlador {
     @FXML
     private Button novaTarefaBtn;
 
+    private SortedList<Tarefa> tarefasOrdenadas;
+
     public void initialize() {
 
 
@@ -46,10 +51,17 @@ public class Controlador {
         ImageView imageView = new ImageView(image);
         novaTarefaBtn.setGraphic(imageView);
 
-        tarefas = new ArrayList<Tarefa>();
-        tarefasListView.getItems().setAll(TarefasFicheiro.getInstance().getTarefas());
-        tarefasListView.setItems(TarefasFicheiro.getInstance().getTarefas());
+        tarefasOrdenadas = new SortedList<>(TarefasFicheiro.getInstance().getTarefas());
+        tarefasOrdenadas.setComparator(new Comparator<Tarefa>() {
+            @Override
+            public int compare(Tarefa o1, Tarefa o2) { //0 iguais, negativo antes o1, positivo antes o2
+                return o1.getDataLimite().compareTo(o2.getDataLimite()); //IMPORTANTE
 
+
+            }
+        });
+
+        tarefasListView.setItems(tarefasOrdenadas);
         tarefasListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tarefa>() { //IMPORTANTE
             @Override
             public void changed(ObservableValue<? extends Tarefa> observableValue, Tarefa tarefa, Tarefa t1) {
@@ -228,6 +240,9 @@ public class Controlador {
         } else {
             System.out.println("Cancel pressed");
         }
+        tarefasListView.refresh();//IMPORTANTISIIIIMO (para ver como cambia o nome na aplicacion
+
+
 
 
     }
