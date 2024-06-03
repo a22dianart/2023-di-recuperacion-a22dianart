@@ -27,6 +27,7 @@ public class TarefasFicheiro {
     private DateTimeFormatter formatter;
     private TarefasFicheiro() {
         formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+
     }
     // Método para acceder á instancia da clase dun Singleton
     public static TarefasFicheiro getInstance(){
@@ -47,6 +48,7 @@ public class TarefasFicheiro {
             }
         };
         tarefas =FXCollections.observableArrayList(extractor);
+        tarefas.addAll(TarefasFicheiro.getInstance().getTarefas());
 
         Path path = Paths.get(filename);
         BufferedReader br = Files.newBufferedReader(path);

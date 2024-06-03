@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -27,7 +28,6 @@ import java.util.*;
 
 public class Controlador {
 
-    private List<Tarefa> tarefas;
     @FXML
     private ListView<Tarefa> tarefasListView;
     @FXML
@@ -42,6 +42,7 @@ public class Controlador {
     private Button novaTarefaBtn;
 
     private SortedList<Tarefa> tarefasOrdenadas;
+    private Comparator<Tarefa> comparator;
 
     public void initialize() {
 
@@ -52,6 +53,7 @@ public class Controlador {
         novaTarefaBtn.setGraphic(imageView);
 
         tarefasOrdenadas = new SortedList<>(TarefasFicheiro.getInstance().getTarefas());
+
         tarefasOrdenadas.setComparator(new Comparator<Tarefa>() {
             @Override
             public int compare(Tarefa o1, Tarefa o2) { //0 iguais, negativo antes o1, positivo antes o2
@@ -61,12 +63,16 @@ public class Controlador {
             }
         });
 
+
         tarefasListView.setItems(tarefasOrdenadas);
         tarefasListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tarefa>() { //IMPORTANTE
             @Override
             public void changed(ObservableValue<? extends Tarefa> observableValue, Tarefa tarefa, Tarefa t1) {
-                mostrarTarefa();
+                if(t1!=null){
+                    mostrarTarefa();
+                }
             }
+
         });
         tarefasListView.getSelectionModel().select(0); //detras do listener para que mostre a primeira tarefa!!!
 
@@ -140,6 +146,7 @@ public class Controlador {
 
 
     }
+
     @FXML
     public void mostrarTarefa() {
         Tarefa tarefaSeleccionada = tarefasListView.getSelectionModel().getSelectedItem();
@@ -235,14 +242,12 @@ public class Controlador {
 
             Tarefa nova = controladorDialogo.procesarResultado();
 
-
+            tarefasListView.getSelectionModel().clearSelection(); //IMPORTANTE PARA QUE CAMBIE O DO CENTRO
             tarefasListView.getSelectionModel().select(nova); //para que se seleccione a nova tarefa
         } else {
             System.out.println("Cancel pressed");
         }
-        tarefasListView.refresh();//IMPORTANTISIIIIMO (para ver como cambia o nome na aplicacion
-
-
+       // tarefasListView.refresh();//NON É NECESARIO
 
 
     }

@@ -1,6 +1,7 @@
 package com.mycompany.todolist.datamodel;
 
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 public class Tarefa {
     private String descricion;
     private String detalles;
-    private SimpleObjectProperty<LocalDate> dataLimite;
+    private ObjectProperty<LocalDate> dataLimite;
 
     public Tarefa(String descricion, String detalles, LocalDate dataLimite) {
         this.descricion = descricion;
@@ -43,9 +44,9 @@ public class Tarefa {
     }
 
     public void setDataLimite(LocalDate dataLimite) {
-        this.dataLimite = new SimpleObjectProperty<>(dataLimite);
+        this.dataLimite = new SimpleObjectProperty<LocalDate>(dataLimite);
     }
-    public SimpleObjectProperty<LocalDate> dataLimiteProperty(){
+    public ObjectProperty<LocalDate> dataLimiteProperty(){
         return dataLimite;
     }
 
